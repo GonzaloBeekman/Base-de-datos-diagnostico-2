@@ -1,0 +1,82 @@
+a) 
+CREATE TABLE MARCAS (
+IdMarca SMALLINT NOT NULL DEFAULT 1,
+NombreMarca CHAR(10) NOT NULL,
+NombreCiudad CHAR(60) NOT NULL,
+PRIMARY KEY (idMarca));
+
+b)
+CREATE TABLE COCHES (
+codcoche SMALLINT NOT NULL,
+nombre CHAR(15) NOT NULL, 
+modelo CHAR(10),
+PRIMARY KEY (codcoche));
+
+c)
+CREATE TABLE MARCO (
+IdMarca SMALLINT NOT NULL,
+codcoche SMALLINT NOT NULL,
+PRIMARY KEY (cifm,codcoche),
+FOREIGN KEY (cifm) REFERENCES MARCA,
+FOREIGN KEY (codcoche) REFERENCES COCHE));
+
+d)
+INSERT INTO MARCAS VALUES (1,'vw','Mar del Plata')
+INSERT INTO MARCAS VALUES (2,'renault','Rosario')
+INSERT INTO MARCAS VALUES (3,'fiat','Cordoba')
+INSERT INTO MARCAS VALUES (4,'ford','Neuquen')
+
+e)
+SELECT * FROM MARCAS
+
+f)
+SELECT nombre, ciudad FROM MARCAS
+
+g)
+select nombre,ciudad from MARCAS where IdMarca = 2
+
+h)
+select NombreMarca,ciudad from marca where ciudad = 'Neuquen'
+
+i)
+select nombre,ciudad
+from marcas
+where ciudad LIKE 'S%'
+
+j)
+update marcas
+set ciudad = 'Nuequen'
+where ciudad = 'Jujuy'
+
+A) Se crea la tabla MARCAS con sus Tres columnas y su llave primaria que se le da a idcoche, a NombreMarca se le da un maximo de 10 caracteres y a  NombreCiudad un maximo de 60.
+
+B) Se crea la tabla CHOCHES con sus Tres columnas y su llave primaria que se le da a codcoche, a nombre se le da un maximo de 15 caracteres y a modelo un maximo de 100.
+
+C) Se crea la tabla MARCO con sus Dos columnas IdMarc como smallint no nulo y codcoche como smallint no nulo. 
+
+D) Inserta los valores en la tabla MARCAS:
+(1,'vw','Mar del Plata')
+(2,'renault','Rosario')
+(3,'fiat','Cordoba')
+(4,'ford','Neuquen')
+
+E) Selecciona todo de la tabla MARCAS
+
+F) Selecciona Nombre y ciudad de la tabla MARCAS pero esta mal escrito, la consulta deberia ser asi:
+
+SELECT NombreMarca, NombreCiudad FROM MARCAS;
+
+G) Selecciona el nombre y ciudad de la tabla MARCAS y pregunta por el Idmarca 2:
+
+SELECT NombreMarca, NombreCiudad FROM `MARCAS` where IdMarca = 2;
+
+H) Seria asi:
+
+select * from MARCAS where NombreCiudad = 'Neuquen'
+
+I) Seleciona nombremarca y nombreciudad de la tabla MARCAS con la pregunta de cual ciudad comienza con la letra s.
+
+SELECT NombreMarca,NombreCiudad FROM `MARCAS` WHERE NombreCiudad LIKE 'S%'
+
+J) Agrega a la tabla MARCAS la ciudad  Neuquen y pregunta por la ciudad Jujuy, se escribe de esta manera: 
+UPDATE FROM `MARCAS` set NombreCiudad = 'Neuquen' where NombreCiudad = 'Jujuy'
